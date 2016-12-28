@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <FrameLayout
+        android:id="@+id/fragment_id"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bulue_main"
+        android:orientation="horizontal"
+        android:paddingBottom="20dp"
+         android:paddingTop="10dp" >
+
+        <TextView
+            android:id="@+id/main_my"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@drawable/main_head"
+            android:text="我的"
+            android:textColor="#bdbdbd" />
+        <TextView
+            android:id="@+id/main_sptime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@drawable/main_table_ico_midle_h"
+            android:text="超人时间"
+            android:textColor="#ffffff" />
+        <TextView
+            android:id="@+id/main_msgcenter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:drawableTop="@drawable/msg_center"
+            android:text="消息中心"
+            android:textColor="#bdbdbd" />
+        
+        
+    </LinearLayout>
+
+</LinearLayout>

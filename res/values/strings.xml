@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Engineer</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <!-- 订单页 -->
+	<string name="yuyue_order">预约订单</string>
+	<string name="now_order">当前订单</string>
+	<string name="history_order">历史订单</string>
+	<string name="my_order_time_demo">下单时间：2016-08-09 16:14</string>
+	<string name="no_register_msg">该手机号尚未注册成为我们的洗车超人，请先注册！</string>
+	<string name="registed_msg">该手机号已经注册成为我们的洗车超人，您可以直接登录！</string>
+
+</resources>

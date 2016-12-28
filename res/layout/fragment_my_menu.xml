@@ -291,7 +291,7 @@
             android:background="#e1e1e1" />
 
         <LinearLayout
-            android:id="@+id/my_menu_refund"
+            android:id="@+id/my_customer_pay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffff"

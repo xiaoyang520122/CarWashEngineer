@@ -16,5 +16,11 @@
 	<string name="org_http">&#160;&#160;官方网站：www.xichechaoren.cn</string>
 	<string name="serve_tel">&#160;&#160;服务热线：400-666-8298</string>
 	<string name="weixin_public">&#160;&#160;微信公众号：洗车超人</string>
+	<string name="chick_pay_type">&#160;选择充值类型</string>
+	<string name="paychick_user">&#160;输入车主注册电话号码</string>
+	<string name="paychick_usertishi">输入电话号码后请确认下方显示充值车主信息无误后才开始充值！</string>
+	<string name="pay_type1">普通充值</string>
+	<string name="pay_type2">购买会员</string>
+	<string name="pay_type3">购买套餐</string>
 
 </resources>

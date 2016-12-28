@@ -37,6 +37,7 @@
         <activity android:name="com.gb.cwsm.engineer.activity.OrderListActivity" ></activity>
         <activity android:name="com.gb.cwsm.engineer.activity.edit.FeedbackActivity" ></activity>
         <activity android:name="com.gb.cwsm.engineer.activity.edit.AboutUsActivity" ></activity>
+         <activity android:name="com.gb.cwsm.engineer.activity.MyPropertyActivity" ></activity>
         
         
         <!-- 个推SDK配置开始 -->

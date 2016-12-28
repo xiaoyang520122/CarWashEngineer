@@ -4,6 +4,7 @@ import com.gb.cwsm.engineer.R;
 import com.gb.cwsm.engineer.fragment.MyMenuFragment;
 import com.gb.cwsm.engineer.fragment.MyMessageFragment;
 import com.gb.cwsm.engineer.fragment.SupermainTimeFragment;
+import com.gb.cwsm.engineer.utils.ActivityManagerUtil;
 
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -32,6 +33,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		ActivityManagerUtil.getInstance().addToList(this);
 		initview();
 	}
 

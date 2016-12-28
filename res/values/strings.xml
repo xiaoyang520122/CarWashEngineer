@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Engineer</string>
+    <string name="app_name">洗车超人员工端</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     
@@ -12,5 +12,9 @@
 	<string name="my_order_time_demo">下单时间：2016-08-09 16:14</string>
 	<string name="no_register_msg">该手机号尚未注册成为我们的洗车超人，请先注册！</string>
 	<string name="registed_msg">该手机号已经注册成为我们的洗车超人，您可以直接登录！</string>
+	<string name="registed_success_msg">恭喜您注册成功！\n 接下来请填写上传个人信息。</string>
+	<string name="org_http">&#160;&#160;官方网站：www.xichechaoren.cn</string>
+	<string name="serve_tel">&#160;&#160;服务热线：400-666-8298</string>
+	<string name="weixin_public">&#160;&#160;微信公众号：洗车超人</string>
 
 </resources>

@@ -15,6 +15,8 @@ import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -34,6 +36,7 @@ import com.gb.cwsm.engineer.BaseActivity;
 import com.gb.cwsm.engineer.MainActivity;
 import com.gb.cwsm.engineer.R;
 import com.gb.cwsm.engineer.entity.URLs;
+import com.gb.cwsm.engineer.utils.ActivityManagerUtil;
 import com.gb.cwsm.engineer.utils.JsonHttpUtils;
 import com.gb.cwsm.engineer.utils.LoadingDialog;
 import com.gb.cwsm.engineer.utils.RegexUtil;
@@ -47,12 +50,14 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 	private List<NameValuePair> params;
 	private String phoneNumber;
 	private LoadingDialog loadDlog;
+	private Dialog dialog;
 	
 	@Override
 	protected void onCreate(Bundle paramBundle) {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(paramBundle);
 		setContentView(R.layout.register_activity);
+		ActivityManagerUtil.getInstance().addToList(this);
 		EventBus.getDefault().register(this);
 		initview();
 	}
@@ -61,6 +66,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 	protected void onDestroy() {
 		super.onDestroy();
 		EventBus.getDefault().unregister(this);
+		codetextToDefault();
 	}
 
 	private void initview() {
@@ -115,11 +121,12 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 			phoneNumber=phoneedit.getText().toString();
 		}
 		showdialog("稍等……");
-		params=new ArrayList<NameValuePair>(2);
+		params=new ArrayList<NameValuePair>(5);
 		params.add(new BasicNameValuePair("mobile", phoneNumber));
 		params.add(new BasicNameValuePair("operatorType", "engineer"));
 		params.add(new BasicNameValuePair("name", usernameedit.getText().toString()));
 		params.add(new BasicNameValuePair("captcha", codeedit.getText().toString()));
+		params.add(new BasicNameValuePair("email", emailedit.getText().toString()));
 		params.add(new BasicNameValuePair("password", "123456"));
 		new Thread(){
 			@Override
@@ -145,7 +152,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 			@Override
 			public void run() {
 				super.run();
-				params = new ArrayList<NameValuePair>(1);
+				params = new ArrayList<NameValuePair>(2);
 				params.add(new BasicNameValuePair("mobile", phoneNumber));
 				params.add(new BasicNameValuePair("operatorType", "engineer"));
 				JsonHttpUtils.doPost(URLs.GET_CHECK_MOBILE, params, JsonHttpUtils.R_GET_CHECK_MOBILE, RegisterActivity.this);
@@ -231,12 +238,46 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 		editor.putString("phonenumber", phoneNumber);
 		editor.commit();
 		editor.clear();
-		timer.cancel();
+		codetextToDefault();
+		AlertDialog.Builder builder=new AlertDialog.Builder(this)
+		.setTitle("提示！")
+		.setMessage(getString(R.string.registed_success_msg))
+		.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface arg0, int arg1) {
+				RegisterActivity.this.startActivity(new Intent(RegisterActivity.this, SupplementActivity.class));
+				RegisterActivity.this.finish();
+			}
+		});
+		dialog=builder.create();
+		dialog.show();
+		listenerbuilder();
+	}
+	
+	private void codetextToDefault() {
+		if (timer!=null) {
+			timer.cancel();
+		}
 		getcodeTv.setBackgroundResource(R.drawable.corners_blue_button5);
 		getcodeTv.setText("获取验证码");
-		startActivity(new Intent(this, SupplementActivity.class));
-		finish();
-//		modifyusermsg();
+		time=1;
+		sendflag=true;
+	}
+	
+	private void listenerbuilder() {
+		TimerTask task=new TimerTask() {
+			@Override
+			public void run() {
+				if (!dialog.isShowing()) {
+					dialog.cancel();
+					RegisterActivity.this.startActivity(new Intent(RegisterActivity.this, SupplementActivity.class));
+					RegisterActivity.this.finish();
+					timer.cancel();
+				}
+			}
+		};
+		timer=new Timer();
+		timer.schedule(task, 1,100);
 	}
 //	@SuppressLint("CommitPrefEdits")
 //	private void saveusermsg2(JSONObject jsonObject) throws JSONException {
@@ -288,8 +329,8 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 			JSONObject jo2 = jo1.getJSONObject("message");
 			if (jo2.getString("type").equals("success")) {
 				getRegisterCode();
-			} else if (jo2.getString("type").equals("warn")) {
-				showregistermsg(jo2.getString(""));
+			} else {
+				showregistermsg(jo2.getString("content"));
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -311,7 +352,8 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 	}
 	
 	private void showregistermsg(String msg) {
-		new AlertDialog.Builder(this).setTitle("提示！").setMessage(msg).setPositiveButton("返回登录", new DialogInterface.OnClickListener() {
+		new AlertDialog.Builder(this).setTitle("提示！").setMessage(msg)
+		.setPositiveButton("返回登录", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {
 				RegisterActivity.this.startActivity(new Intent(RegisterActivity.this, LogingActivity.class));
@@ -332,12 +374,8 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 	
 	private void settime() {
 		if (time > 60) {
-			getcodeTv.setBackgroundResource(R.drawable.corners_blue_button5);
-			getcodeTv.setText("获取验证码");
-			sendflag = true;
-			time = 1;
-			timer.cancel();
-		} else {
+			codetextToDefault();
+		} else if (!sendflag)  {
 			getcodeTv.setBackgroundResource(R.drawable.corners_hui_4_5dp);
 			getcodeTv.setText((60 - time) + "秒后重发");
 		}

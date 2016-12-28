@@ -10,6 +10,7 @@ import android.widget.Button;
 import com.gb.cwsm.engineer.BaseActivity;
 import com.gb.cwsm.engineer.MainActivity;
 import com.gb.cwsm.engineer.R;
+import com.gb.cwsm.engineer.utils.ActivityManagerUtil;
 
 public class SupplementActivity extends BaseActivity implements OnClickListener {
 
@@ -20,6 +21,7 @@ public class SupplementActivity extends BaseActivity implements OnClickListener 
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(paramBundle);
 		setContentView(R.layout.supplement_info);
+		ActivityManagerUtil.getInstance().addToList(this);
 		initview();
 	}
 

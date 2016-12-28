@@ -7,6 +7,7 @@ import android.view.View.OnClickListener;
 
 import com.gb.cwsm.engineer.BaseActivity;
 import com.gb.cwsm.engineer.R;
+import com.gb.cwsm.engineer.utils.ActivityManagerUtil;
 
 public class OrderListActivity extends BaseActivity implements OnClickListener {
 	
@@ -15,6 +16,7 @@ public class OrderListActivity extends BaseActivity implements OnClickListener {
 		settitlename("返回", "订单中心", "");
 		super.onCreate(paramBundle);
 		setContentView(R.layout.my_order_list);
+		ActivityManagerUtil.getInstance().addToList(this);
 		initview();
 	}
 

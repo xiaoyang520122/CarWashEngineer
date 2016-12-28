@@ -14,13 +14,13 @@
         <!-- 第一组 -->
 
         <LinearLayout
-            android:id="@+id/my_menu_myorder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="#ffffff"
             android:gravity="center_vertical"
             android:orientation="horizontal"
+            android:visibility="gone"
             android:padding="18dp" >
 
             <TextView
@@ -44,7 +44,6 @@
             android:background="#e1e1e1" />
 
         <LinearLayout
-            android:id="@+id/my_menu_myorder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -62,7 +61,6 @@
                 android:textColor="@color/hui_main" />
 
             <com.zcw.togglebutton.ToggleButton
-                android:id="@+id/editer_setmarker_type"
                 android:layout_width="48dp"
                 android:layout_height="25dp"
                 toggle:onColor="@color/bulue_main" >
@@ -75,7 +73,6 @@
             android:background="#e1e1e1" />
 
         <LinearLayout
-            android:id="@+id/my_menu_myorder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffff"
@@ -92,7 +89,6 @@
                 android:textColor="@color/hui_main" />
 
             <com.zcw.togglebutton.ToggleButton
-                android:id="@+id/editer_setmarker_type"
                 android:layout_width="48dp"
                 android:layout_height="25dp"
                 toggle:onColor="@color/bulue_main" >
@@ -105,7 +101,6 @@
             android:background="#e1e1e1" />
 
         <LinearLayout
-            android:id="@+id/my_menu_myorder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffff"
@@ -122,7 +117,6 @@
                 android:textColor="@color/hui_main" />
 
             <com.zcw.togglebutton.ToggleButton
-                android:id="@+id/editer_setmarker_type"
                 android:layout_width="48dp"
                 android:layout_height="25dp"
                 toggle:onColor="@color/bulue_main" >
@@ -135,7 +129,6 @@
             android:background="#e1e1e1" />
 
         <LinearLayout
-            android:id="@+id/my_menu_myorder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffff"
@@ -194,7 +187,7 @@
             android:background="#e1e1e1" />
 
         <LinearLayout
-            android:id="@+id/my_menu_myorder"
+            android:id="@+id/editc_Feedback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -218,34 +211,6 @@
                 android:src="@drawable/left_jt_hui" />
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="1sp"
-            android:background="#e1e1e1" />
-
-        <LinearLayout
-            android:id="@+id/my_menu_myorder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ffffff"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="18dp" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_weight="1"
-                android:text="联系我们"
-                android:textColor="@color/hui_main" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="15dp"
-                android:layout_marginRight="5dp"
-                android:src="@drawable/left_jt_hui" />
-        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -253,7 +218,7 @@
             android:background="#e1e1e1" />
 
         <LinearLayout
-            android:id="@+id/my_menu_myorder"
+            android:id="@+id/editc_about_us"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffff"
@@ -277,7 +242,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/my_menu_myorder"
+            android:id="@+id/editc_exeit_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -292,7 +257,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_weight="1"
                 android:text="退出当前用户"
-                android:textColor="@color/hui_main" />
+                android:textColor="@color/red" />
         </LinearLayout>
 
         <TextView
@@ -301,7 +266,7 @@
             android:background="#e1e1e1" />
 
         <LinearLayout
-            android:id="@+id/my_menu_myorder"
+            android:id="@+id/editc_exeit_app"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffff"

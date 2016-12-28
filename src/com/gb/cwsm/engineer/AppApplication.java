@@ -33,7 +33,6 @@ public class AppApplication extends Application {
 		mInstance = this;
 		setMarkerType();
 		getCID();
-		 Log.i("LONGING", "AppApplication.CID=进入……");
 	}
 
 	private void getCID() {
@@ -73,7 +72,7 @@ public class AppApplication extends Application {
 
 	        @Override
 	        public void handleMessage(Message msg) {
-	        	Log.e("LONGING", "进入AppApplication.CID = " + (String) msg.obj);
+//	        	Log.e("LONGING", "进入AppApplication.CID = " + (String) msg.obj);
 	            switch (msg.what) {
 //	                case 0:
 //	                    if (demoActivity != null) {
@@ -91,7 +90,7 @@ public class AppApplication extends Application {
 //	                            GetuiSdkDemoActivity.tView.setText((String) msg.obj);
 //	                        }
 //	                    }
-	                	Log.e("LONGING", "AppApplication.CID = " + (String) msg.obj);
+//	                	Log.e("LONGING", "AppApplication.CID = " + (String) msg.obj);
 	                	Editor editor = sp.edit();
 	                	editor.putString("clientID", (String) msg.obj);
 	                	editor.commit();

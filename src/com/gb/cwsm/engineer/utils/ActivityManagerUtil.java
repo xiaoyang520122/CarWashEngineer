@@ -1,5 +1,6 @@
 package com.gb.cwsm.engineer.utils;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,17 +30,23 @@ public class ActivityManagerUtil {
 	}
 
 	
+	@SuppressLint("NewApi")
 	public void finishAllActivity() {
-		Iterator localIterator;
-		if (amu != null) {
-			localIterator = activityList.iterator();
-			if (!localIterator.hasNext()) {
-				return;
-			}
-			Activity localActivity = (Activity) localIterator.next();
-			if (localActivity != null) {
-				localActivity.finish();
-			}
+//		Iterator localIterator;
+//		if (amu != null) {
+//			localIterator = activityList.iterator();
+//			if (!localIterator.hasNext()) {
+//				return;
+//			}
+//			Activity localActivity = (Activity) localIterator.next();
+//			if (localActivity != null) {
+//				localActivity.finish();
+//			}
+//		}
+		for (Activity activity:activityList) {
+//			if (!activity.isDestroyed()) {
+				activity.finish();
+//			}
 		}
 	}
 }

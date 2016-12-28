@@ -34,6 +34,7 @@ import com.gb.cwsm.engineer.BaseActivity;
 import com.gb.cwsm.engineer.MainActivity;
 import com.gb.cwsm.engineer.R;
 import com.gb.cwsm.engineer.entity.URLs;
+import com.gb.cwsm.engineer.utils.ActivityManagerUtil;
 import com.gb.cwsm.engineer.utils.JsonHttpUtils;
 import com.gb.cwsm.engineer.utils.LoadingDialog;
 import com.gb.cwsm.engineer.utils.RegexUtil;
@@ -47,20 +48,44 @@ public class LogingActivity extends BaseActivity implements OnClickListener {
 	private List<NameValuePair> params;
 	private String phoneNumber;
 	private LoadingDialog loadDlog;
+	private SharedPreferences sp;
 
 	@Override
 	protected void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.loging);
+		ActivityManagerUtil.getInstance().addToList(this);
+		isloging();
 		EventBus.getDefault().register(this);
 		initview();
+	}
+
+	private void isloging() {
+		sp=getSharedPreferences("carwashsuperman", Context.MODE_PRIVATE);
+		phoneNumber=sp.getString("phonenumber", "");
+		Log.i("LONGING", "phoneNumber=="+phoneNumber);
+		if (!TextUtils.isEmpty(phoneNumber)) {
+			startActivity(new Intent(this, MainActivity.class));
+			finish();
+		}
 	}
 
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 		EventBus.getDefault().unregister(this);
+		codetextToDefault();
+	}
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+		sp=getSharedPreferences("carwashsuperman", Context.MODE_PRIVATE);
+		phoneNumber=sp.getString("phonenumber", "");
+		if (TextUtils.isEmpty(phoneNumber)) {
+			ActivityManagerUtil.getInstance().finishAllActivity();
+		}
 	}
 
 	private void initview() {
@@ -105,6 +130,20 @@ public class LogingActivity extends BaseActivity implements OnClickListener {
 			logingcodeedit.requestFocus();
 			return;
 		}
+	/**测试登陆验证**/
+		if (logingcodeedit.getText().toString().equals("000000")) {
+			sp=getSharedPreferences("carwashsuperman", Context.MODE_PRIVATE);
+			Editor editor=sp.edit();
+			editor.putString("username", "测试用户不能联网操作");
+			editor.putString("phonenumber", "000000");
+			editor.commit();
+			editor.clear();
+			startActivity(new Intent(this, MainActivity.class));
+			finish();
+			return;
+		}
+	/***测试登陆验证结束***/
+		
 		if (TextUtils.isEmpty(phoneNumber)) {
 			phoneNumber=mobileedit.getText().toString();
 		}
@@ -138,6 +177,7 @@ public class LogingActivity extends BaseActivity implements OnClickListener {
 				super.run();
 				params = new ArrayList<NameValuePair>(1);
 				params.add(new BasicNameValuePair("mobile", phoneNumber));
+				params.add(new BasicNameValuePair("operatorType", "engineer"));
 				JsonHttpUtils.doPost(URLs.GET_CHECK_MOBILE, params, JsonHttpUtils.GET_CHECK_MOBILE, LogingActivity.this);
 			}
 		}.start();
@@ -149,13 +189,16 @@ public class LogingActivity extends BaseActivity implements OnClickListener {
 		int code = Integer.valueOf(value.getName());
 		switch (code) {
 		case JsonHttpUtils.GET_CHECK_MOBILE:
+			Log.i("LONGING", "登陆  检查手机号=="+value.getValue());
 			checkmobile(value.getValue());
 			break;
 		case JsonHttpUtils.GET_DXYZ_CODE:
+			Log.i("LONGING", "登陆  获取验证短信=="+value.getValue());
 			getlogingcode(value.getValue());
 			break;
 			
 		case JsonHttpUtils.LOGING_BY_DX:
+			Log.i("LONGING", "登陆  短信登陆=="+value.getValue());
 			islogingsuccess(value.getValue());
 			break;
 			
@@ -170,12 +213,8 @@ public class LogingActivity extends BaseActivity implements OnClickListener {
 	
 	private void settime() {
 		if (time > 60) {
-			getcodeTv.setBackgroundResource(R.drawable.corners_blue_button5);
-			getcodeTv.setText("获取验证码");
-			sendflag = true;
-			time = 1;
-			timer.cancel();
-		} else {
+			codetextToDefault();
+		} else  if (!sendflag) {
 			getcodeTv.setBackgroundResource(R.drawable.corners_hui_4_5dp);
 			getcodeTv.setText((60 - time) + "秒后重发");
 		}
@@ -201,16 +240,14 @@ public class LogingActivity extends BaseActivity implements OnClickListener {
 
 	@SuppressLint("CommitPrefEdits")
 	private void saveusermsg(JSONObject jsonObject) throws JSONException {
-		SharedPreferences sp=getSharedPreferences("carwashsuperman", Context.MODE_PRIVATE);
+		sp=getSharedPreferences("carwashsuperman", Context.MODE_PRIVATE);
 		Editor editor=sp.edit();
 		editor.putString("username", jsonObject.getString("name"));
 		editor.putString("phonenumber", phoneNumber);
 		editor.commit();
 		editor.clear();
 		startActivity(new Intent(this, MainActivity.class));
-		timer.cancel();
-		getcodeTv.setBackgroundResource(R.drawable.corners_blue_button5);
-		getcodeTv.setText("获取验证码");
+		codetextToDefault();
 		finish();
 	}
 
@@ -273,6 +310,16 @@ public class LogingActivity extends BaseActivity implements OnClickListener {
 			return;
 		}
 		loadDlog.setMessage(msg).show();
+	}
+	
+	private void codetextToDefault() {
+		if (timer!=null) {
+			timer.cancel();
+		}
+		getcodeTv.setBackgroundResource(R.drawable.corners_blue_button5);
+		getcodeTv.setText("获取验证码");
+		time=1;
+		sendflag=true;
 	}
 	
 	private int time=1;

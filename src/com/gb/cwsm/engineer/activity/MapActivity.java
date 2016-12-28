@@ -25,6 +25,7 @@ import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.model.inner.GeoPoint;
 import com.gb.cwsm.engineer.BaseActivity;
 import com.gb.cwsm.engineer.R;
+import com.gb.cwsm.engineer.utils.ActivityManagerUtil;
 
 public class MapActivity extends BaseActivity {
 
@@ -42,6 +43,7 @@ public class MapActivity extends BaseActivity {
 		super.onCreate(paramBundle);
 		SDKInitializer.initialize(getApplicationContext());
 		setContentView(R.layout.map);
+		ActivityManagerUtil.getInstance().addToList(this);
 		initview();
 	}
 

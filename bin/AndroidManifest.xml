@@ -28,6 +28,17 @@
             </intent-filter>
         </activity>
         
+        <activity android:name="com.gb.cwsm.engineer.MainActivity" ></activity>
+        <activity android:name="com.gb.cwsm.engineer.register.RegisterActivity" ></activity>
+        <activity android:name="com.gb.cwsm.engineer.register.SupplementActivity" ></activity>
+        <activity android:name="com.gb.cwsm.engineer.activity.MapActivity" ></activity>
+        <activity android:name="com.gb.cwsm.engineer.activity.edit.EditerCenterActivity" ></activity>
+        <activity android:name="com.gb.cwsm.engineer.activity.DaShangListActivity" ></activity>
+        <activity android:name="com.gb.cwsm.engineer.activity.OrderListActivity" ></activity>
+        <activity android:name="com.gb.cwsm.engineer.activity.edit.FeedbackActivity" ></activity>
+        <activity android:name="com.gb.cwsm.engineer.activity.edit.AboutUsActivity" ></activity>
+        
+        
         <!-- 个推SDK配置开始 -->
 <!-- 配置的第三方参数属性 -->
 <meta-data
@@ -77,13 +88,6 @@
        android:process=":pushservice"
        android:taskAffinity="com.igexin.sdk.PushActivityTask"
        android:theme="@android:style/Theme.Translucent.NoTitleBar" />
- <activity android:name="com.gb.cwsm.engineer.MainActivity" ></activity>
-         <activity android:name="com.gb.cwsm.engineer.register.RegisterActivity" ></activity>
-        <activity android:name="com.gb.cwsm.engineer.register.SupplementActivity" ></activity>
-        <activity android:name="com.gb.cwsm.engineer.activity.MapActivity" ></activity>
-        <activity android:name="com.gb.cwsm.engineer.activity.EditerCenterActivity" ></activity>
-        <activity android:name="com.gb.cwsm.engineer.activity.DaShangListActivity" ></activity>
-        <activity android:name="com.gb.cwsm.engineer.activity.OrderListActivity" ></activity>
         
 <activity
        android:name="com.igexin.sdk.GActivity"

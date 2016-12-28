@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_hui_main"
+    android:orientation="vertical"
+    android:padding="15dp" >
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/corners_white_4_5dp"
+        android:gravity="top"
+        android:layout_marginTop="20dp"
+        android:hint="请填写您的意见！"
+        android:padding="10dp"
+        android:textSize="15sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/corners_white_4_5dp"
+        android:gravity="top"
+        android:hint="请填写您联系方式（电话、QQ号或邮箱）"
+        android:padding="10dp"
+        android:textSize="15sp" />
+    <Button 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="bottom"
+        android:textColor="#ffffff"
+        android:text="提交反馈"
+        android:textSize="15sp"
+        android:background="@drawable/button_blue"
+        />
+
+</LinearLayout>

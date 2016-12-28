@@ -117,7 +117,10 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 		showdialog("稍等……");
 		params=new ArrayList<NameValuePair>(2);
 		params.add(new BasicNameValuePair("mobile", phoneNumber));
+		params.add(new BasicNameValuePair("operatorType", "engineer"));
+		params.add(new BasicNameValuePair("name", usernameedit.getText().toString()));
 		params.add(new BasicNameValuePair("captcha", codeedit.getText().toString()));
+		params.add(new BasicNameValuePair("password", "123456"));
 		new Thread(){
 			@Override
 			public void run() {
@@ -144,6 +147,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 				super.run();
 				params = new ArrayList<NameValuePair>(1);
 				params.add(new BasicNameValuePair("mobile", phoneNumber));
+				params.add(new BasicNameValuePair("operatorType", "engineer"));
 				JsonHttpUtils.doPost(URLs.GET_CHECK_MOBILE, params, JsonHttpUtils.R_GET_CHECK_MOBILE, RegisterActivity.this);
 			}
 		}.start();
@@ -171,7 +175,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 			
 		case JsonHttpUtils.MODIFY_USER_MSG:
 			Log.i("LONGING", "修改个人信息=="+value.getValue());
-			isModifySuccess(value.getValue());
+//			isModifySuccess(value.getValue());
 			break;
 			
 		case 8888:
@@ -184,22 +188,22 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 		
 	}
 	
-	private void isModifySuccess(String jsonvalue) {
-		Log.i("LONGING", "短信登陆验证返回数据="+jsonvalue);
-		loadDlog.dismiss();
-		try {
-			JSONObject jo1 = new JSONObject(jsonvalue);
-			JSONObject jo2 = jo1.getJSONObject("message");
-			if (jo2.getString("type").equals("success")) {
-				saveusermsg2(jo1.getJSONObject("data"));
-			}else {
-				
-			}
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		
-	}
+//	private void isModifySuccess(String jsonvalue) {
+//		Log.i("LONGING", "短信登陆验证返回数据="+jsonvalue);
+//		loadDlog.dismiss();
+//		try {
+//			JSONObject jo1 = new JSONObject(jsonvalue);
+//			JSONObject jo2 = jo1.getJSONObject("message");
+//			if (jo2.getString("type").equals("success")) {
+//				saveusermsg2(jo1.getJSONObject("data"));
+//			}else {
+//				
+//			}
+//		} catch (JSONException e) {
+//			e.printStackTrace();
+//		}
+//		
+//	}
 
 	private void isRegistersuccess(String jsonvalue) {
 		Log.i("LONGING", "短信登陆验证返回数据="+jsonvalue);
@@ -208,7 +212,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 			JSONObject jo1 = new JSONObject(jsonvalue);
 			JSONObject jo2 = jo1.getJSONObject("message");
 			if (jo2.getString("type").equals("success")) {
-				saveusermsg(jo1.getJSONObject("data"));
+				saveusermsg();
 			}else {
 				codeedit.setError(jo2.getString("content"));
 				codeedit.setFocusable(true);
@@ -220,23 +224,10 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 	}
 	
 	@SuppressLint("CommitPrefEdits")
-	private void saveusermsg(JSONObject jsonObject) throws JSONException {
+	private void saveusermsg() {
 		SharedPreferences sp=getSharedPreferences("carwashsuperman", Context.MODE_PRIVATE);
 		Editor editor=sp.edit();
-		editor.putString("username", jsonObject.getString("name"));
-		editor.putString("phonenumber", phoneNumber);
-		editor.commit();
-		editor.clear();
-		timer.cancel();
-		getcodeTv.setBackgroundResource(R.drawable.corners_blue_button5);
-		getcodeTv.setText("获取验证码");
-		modifyusermsg();
-	}
-	@SuppressLint("CommitPrefEdits")
-	private void saveusermsg2(JSONObject jsonObject) throws JSONException {
-		SharedPreferences sp=getSharedPreferences("carwashsuperman", Context.MODE_PRIVATE);
-		Editor editor=sp.edit();
-		editor.putString("username", jsonObject.getString("name"));
+		editor.putString("username", usernameedit.getText().toString());
 		editor.putString("phonenumber", phoneNumber);
 		editor.commit();
 		editor.clear();
@@ -245,21 +236,36 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 		getcodeTv.setText("获取验证码");
 		startActivity(new Intent(this, SupplementActivity.class));
 		finish();
+//		modifyusermsg();
 	}
+//	@SuppressLint("CommitPrefEdits")
+//	private void saveusermsg2(JSONObject jsonObject) throws JSONException {
+//		SharedPreferences sp=getSharedPreferences("carwashsuperman", Context.MODE_PRIVATE);
+//		Editor editor=sp.edit();
+//		editor.putString("username", jsonObject.getString("name"));
+//		editor.putString("phonenumber", phoneNumber);
+//		editor.commit();
+//		editor.clear();
+//		timer.cancel();
+//		getcodeTv.setBackgroundResource(R.drawable.corners_blue_button5);
+//		getcodeTv.setText("获取验证码");
+//		startActivity(new Intent(this, SupplementActivity.class));
+//		finish();
+//	}
 
-	private void modifyusermsg() {
-		params=new ArrayList<NameValuePair>(2);
-		params.add(new BasicNameValuePair("name", usernameedit.getText().toString()));
-		params.add(new BasicNameValuePair("email", emailedit.getText().toString()));
-		
-		new Thread(){
-			@Override
-			public void run() {
-				super.run();
-				JsonHttpUtils.doPost(URLs.MODIFY_USER_MSG, params, JsonHttpUtils.MODIFY_USER_MSG, RegisterActivity.this);
-			}
-		}.start();
-	}
+//	private void modifyusermsg() {
+//		params=new ArrayList<NameValuePair>(2);
+//		params.add(new BasicNameValuePair("name", usernameedit.getText().toString()));
+//		params.add(new BasicNameValuePair("email", emailedit.getText().toString()));
+//		
+//		new Thread(){
+//			@Override
+//			public void run() {
+//				super.run();
+//				JsonHttpUtils.doPost(URLs.MODIFY_USER_MSG, params, JsonHttpUtils.MODIFY_USER_MSG, RegisterActivity.this);
+//			}
+//		}.start();
+//	}
 
 	private void iscodesend(String jsonvalue) {
 		try {

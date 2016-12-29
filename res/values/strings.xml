@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">洗车超人员工端</string>
+    <string name="app_name">Superman</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     
@@ -18,9 +18,15 @@
 	<string name="weixin_public">&#160;&#160;微信公众号：洗车超人</string>
 	<string name="chick_pay_type">&#160;选择充值类型</string>
 	<string name="paychick_user">&#160;输入车主注册电话号码</string>
+	<string name="chicek_pay_method">选择支付方式</string>
+	<string name="edit_pay_number">充值金额</string>
 	<string name="paychick_usertishi">输入电话号码后请确认下方显示充值车主信息无误后才开始充值！</string>
 	<string name="pay_type1">普通充值</string>
 	<string name="pay_type2">购买会员</string>
 	<string name="pay_type3">购买套餐</string>
+	<string name="edit_time">设置可预约时间段</string>
+	<string name="edit_time_tishi1">灰色为全天未设置可预约时间段</string>
+	<string name="edit_time_datetishi">所选日期</string>
+	<string name="demo_date">2016-12-01</string>
 
 </resources>

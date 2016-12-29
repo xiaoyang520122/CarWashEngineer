@@ -13,6 +13,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="10dp"
+        android:textSize="18sp"
         android:text="@string/chick_pay_type"
         android:textColor="@color/hui_main" />
 

@@ -13,6 +13,7 @@
         android:gravity="top"
         android:layout_marginTop="20dp"
         android:hint="请填写您的意见！"
+        android:textColorHint="@color/hui_line"
         android:padding="10dp"
         android:textSize="15sp" />
 
@@ -22,6 +23,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/corners_white_4_5dp"
         android:gravity="top"
+        android:textColorHint="@color/hui_line"
         android:hint="请填写您联系方式（电话、QQ号或邮箱）"
         android:padding="10dp"
         android:textSize="15sp" />

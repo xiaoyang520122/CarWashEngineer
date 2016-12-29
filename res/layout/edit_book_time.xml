@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/corners_blue_button10"
+            android:drawableLeft="@drawable/mytime_white64"
+            android:gravity="center_vertical"
+            android:padding="20dp"
+            android:text="@string/edit_time"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:text="@string/edit_time_tishi1"
+            android:textColor="@color/yellow_main"
+            android:textSize="11sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"  >
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/dittime_week1"
+                android:layout_width="45dp"
+                android:layout_height="48dp"
+                android:background="@drawable/checkbox_bg"
+                android:gravity="center"
+                android:text="周一"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+           <TextView
+                android:id="@+id/dittime_week2"
+                android:layout_width="45dp"
+                android:layout_height="48dp"
+                android:background="@drawable/checkbox_bg"
+                android:gravity="center"
+                android:text="周二"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/dittime_week3"
+                android:layout_width="45dp"
+                android:layout_height="48dp"
+                android:background="@drawable/checkbox_bg"
+                android:gravity="center"
+                android:text="周三"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+           <TextView
+                android:id="@+id/dittime_week4"
+                android:layout_width="45dp"
+                android:layout_height="48dp"
+                android:background="@drawable/checkbox_bg"
+                android:gravity="center"
+                android:text="周四"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/dittime_week5"
+                android:layout_width="45dp"
+                android:layout_height="48dp"
+                android:background="@drawable/checkbox_bg"
+                android:gravity="center"
+                android:text="周五"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+           <TextView
+                android:id="@+id/dittime_week6"
+                android:layout_width="45dp"
+                android:layout_height="48dp"
+                android:background="@drawable/checkbox_bg"
+                android:gravity="center"
+                android:text="周六"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+           <TextView
+                android:id="@+id/dittime_week7"
+                android:layout_width="45dp"
+                android:layout_height="48dp"
+                android:background="@drawable/checkbox_bg"
+                android:gravity="center"
+                android:text="周日"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical|right"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="25dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:drawableLeft="@drawable/calender_yellow48"
+                android:gravity="center_vertical"
+                android:text="@string/edit_time_datetishi"
+                android:textColor="@color/yellow_main"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="@string/demo_date"
+                android:textColor="@color/hui_main"
+                android:textSize="13sp" />
+        </LinearLayout>
+       <com.gb.cwsm.engineer.view.MyGridView
+        android:id="@+id/editbook_gridView1"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:verticalSpacing="5dp"
+        android:horizontalSpacing="5dp"
+        android:numColumns="3" >
+    </com.gb.cwsm.engineer.view.MyGridView>
+    </LinearLayout>
+
+</ScrollView>

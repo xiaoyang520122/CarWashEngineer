@@ -29,6 +29,7 @@
         </activity>
         
         <activity android:name="com.gb.cwsm.engineer.MainActivity" ></activity>
+       <activity android:name="com.gb.cwsm.engineer.activity.CustomerPayActivity" ></activity>
         <activity android:name="com.gb.cwsm.engineer.register.RegisterActivity" ></activity>
         <activity android:name="com.gb.cwsm.engineer.register.SupplementActivity" ></activity>
         <activity android:name="com.gb.cwsm.engineer.activity.MapActivity" ></activity>
@@ -38,6 +39,7 @@
         <activity android:name="com.gb.cwsm.engineer.activity.edit.FeedbackActivity" ></activity>
         <activity android:name="com.gb.cwsm.engineer.activity.edit.AboutUsActivity" ></activity>
          <activity android:name="com.gb.cwsm.engineer.activity.MyPropertyActivity" ></activity>
+        <activity android:name="com.gb.cwsm.engineer.activity.EditTimeActivity" ></activity>
         
         
         <!-- 个推SDK配置开始 -->

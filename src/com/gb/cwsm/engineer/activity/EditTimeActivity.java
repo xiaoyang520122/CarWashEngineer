@@ -55,7 +55,7 @@ public class EditTimeActivity extends BaseActivity implements OnClickListener {
 		printdata();
 		initweek();
 		gridView=(MyGridView) findViewById(R.id.editbook_gridView1);
-		
+		gridView.setFocusable(false);
 		inflater=LayoutInflater.from(this);
 		gridView.setAdapter(new MyGridAdapter());
 	}

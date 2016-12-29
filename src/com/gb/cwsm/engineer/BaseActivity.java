@@ -1,18 +1,23 @@
 package com.gb.cwsm.engineer;
 
+import android.R.integer;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.gb.cwsm.engineer.getui.DemoIntentService;
@@ -47,6 +52,7 @@ public class BaseActivity extends FragmentActivity {
 	public static LoadingDialog lodingDialog; 
 	public static int widthPixel = 0;
 	public static double widthScale;
+	private PopupWindow popupWindow;
 
 	private ActionBar actionBar;
 	private View mActionBarView;
@@ -182,6 +188,21 @@ public class BaseActivity extends FragmentActivity {
 	 */
 	public void SetMoreOnclick(OnClickListener onClickListener) {
 		more.setOnClickListener(onClickListener);
+	}
+	
+	public PopupWindow setpopupwindow(Context context,int layout){
+		View view=((Activity)context).getLayoutInflater().inflate(layout, null);
+		popupWindow=new PopupWindow(view, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, true);
+		popupWindow.setTouchable(true);
+		popupWindow.setOutsideTouchable(true);
+		popupWindow.setBackgroundDrawable(new BitmapDrawable(getResources(), (Bitmap)null));
+		more.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				popupWindow.showAsDropDown(more);
+			}
+		});
+		return popupWindow;
 	}
 
 }

@@ -27,6 +27,8 @@
 	<string name="edit_time">设置可预约时间段</string>
 	<string name="edit_time_tishi1">灰色为全天未设置可预约时间段</string>
 	<string name="edit_time_datetishi">所选日期</string>
-	<string name="demo_date">2016-12-01</string>
+	<string name="demo_date">2016-12-01 星期一</string>
+	<string name="complatid_title">投诉记录</string>
+	<string name="complatid_title2">扣款记录</string>
 
 </resources>

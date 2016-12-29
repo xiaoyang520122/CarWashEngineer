@@ -5,15 +5,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
         android:orientation="vertical" >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/corners_blue_button10"
             android:drawableLeft="@drawable/mytime_white64"
@@ -30,7 +31,7 @@
             android:gravity="center_vertical"
             android:text="@string/edit_time_tishi1"
             android:textColor="@color/yellow_main"
-            android:textSize="11sp" />
+            android:textSize="12sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -165,7 +166,7 @@
                 android:gravity="center_vertical"
                 android:text="@string/edit_time_datetishi"
                 android:textColor="@color/yellow_main"
-                android:textSize="13sp" />
+                android:textSize="15sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -173,7 +174,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="@string/demo_date"
                 android:textColor="@color/hui_main"
-                android:textSize="13sp" />
+                android:textSize="15sp" />
         </LinearLayout>
        <com.gb.cwsm.engineer.view.MyGridView
         android:id="@+id/editbook_gridView1"

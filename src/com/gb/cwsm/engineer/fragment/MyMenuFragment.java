@@ -1,6 +1,7 @@
 package com.gb.cwsm.engineer.fragment;
 
 import com.gb.cwsm.engineer.R;
+import com.gb.cwsm.engineer.activity.ConplaintActivity;
 import com.gb.cwsm.engineer.activity.CustomerPayActivity;
 import com.gb.cwsm.engineer.activity.DaShangListActivity;
 import com.gb.cwsm.engineer.activity.EditTimeActivity;
@@ -33,6 +34,7 @@ public class MyMenuFragment extends Fragment implements OnClickListener {
 		mainView.findViewById(R.id.my_menu_myproperty).setOnClickListener(this);
 		mainView.findViewById(R.id.my_customer_pay).setOnClickListener(this);
 		mainView.findViewById(R.id.menu_booktime).setOnClickListener(this);
+		mainView.findViewById(R.id.menu_tskk).setOnClickListener(this);
 	}
 	@Override
 	public void onClick(View v) {
@@ -57,6 +59,9 @@ public class MyMenuFragment extends Fragment implements OnClickListener {
 			break;
 		case R.id.menu_booktime:
 			getActivity().startActivity(new Intent(getActivity(), EditTimeActivity.class));
+			break;
+		case R.id.menu_tskk:
+			getActivity().startActivity(new Intent(getActivity(), ConplaintActivity.class));
 			break;
 
 		default:

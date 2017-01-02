@@ -380,6 +380,7 @@ int string registed_msg 0x7f060008
 int string registed_success_msg 0x7f060009
 int string serve_tel 0x7f06000b
 int string serve_type2 0x7f060021
+int string serve_type_s 0x7f060022
 int string start_serve 0x7f060020
 int string user_info 0x7f06001c
 int string vip_type 0x7f06001b

@@ -452,6 +452,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int registed_success_msg=0x7f060009;
         public static final int serve_tel=0x7f06000b;
         public static final int serve_type2=0x7f060021;
+        public static final int serve_type_s=0x7f060022;
         public static final int start_serve=0x7f060020;
         public static final int user_info=0x7f06001c;
         public static final int vip_type=0x7f06001b;

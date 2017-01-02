@@ -37,5 +37,6 @@
 	<string name="look_road">查 看 导 航 路 线</string>
 	<string name="start_serve">开始服务</string>
 	<string name="serve_type2">服务类型 | </string>
+	<string name="serve_type_s">服务类型 | %s</string>
 
 </resources>

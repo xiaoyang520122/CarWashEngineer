@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+import com.baidu.mapapi.SDKInitializer;
 import com.gb.cwsm.engineer.entity.PersistentCookieStore;
 
 public class AppApplication extends Application {
@@ -31,6 +32,7 @@ public class AppApplication extends Application {
 		// TODO Auto-generated method stub
 		super.onCreate();
 		mInstance = this;
+		SDKInitializer.initialize(this);
 		setMarkerType();
 		getCID();
 	}

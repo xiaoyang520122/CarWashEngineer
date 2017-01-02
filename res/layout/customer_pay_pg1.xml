@@ -8,12 +8,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
-
-        <LinearLayout
+<LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@drawable/corners_white_hui_5"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/corners_popup_top"
             android:gravity="center_vertical"
             android:orientation="vertical" >
 
@@ -26,7 +27,7 @@
                 android:paddingRight="10dp"
                 android:paddingTop="10dp"
                 android:text="@string/paychick_user"
-                android:textColor="@color/hui_main"
+                android:textColor="@color/white"
                 android:textSize="16sp" />
 
             <LinearLayout
@@ -38,15 +39,15 @@
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
-                    android:padding="5dp"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:drawableLeft="@drawable/phone_ico_hui25"
                     android:background="@drawable/corners_white_hui_5"
+                    android:drawableLeft="@drawable/phone_ico_blue30"
                     android:hint="请输入注册手机号"
                     android:inputType="phone"
-                    android:textColor="#5e5c67"
+                    android:padding="5dp"
+                    android:textColor="@color/bulue_main"
                     android:textColorHint="@color/hui_line"
                     android:textSize="15sp" />
             </LinearLayout>
@@ -57,35 +58,36 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="@string/paychick_usertishi"
-                android:textColor="@color/red"
+                android:textColor="@color/white"
                 android:textSize="10sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="15dp" >
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/user" />
-
-                <TextView
-                    android:id="@+id/register_username"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#ffffff"
-                    android:hint="用户名"
-                    android:textColor="#5e5c67"
-                    android:textColorHint="@color/hui_line"
-                            android:textSize="15sp" />
-            </LinearLayout>
         </LinearLayout>
+<LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/corners_popup_buttom"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="15dp" >
 
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/user_blue48" />
+
+            <TextView
+                android:id="@+id/register_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="用户名"
+                android:textColor="@color/bulue_main"
+                android:textColorHint="@color/hui_line"
+                android:textSize="15sp" />
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

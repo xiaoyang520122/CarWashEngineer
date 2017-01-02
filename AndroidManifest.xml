@@ -41,6 +41,7 @@
          <activity android:name="com.gb.cwsm.engineer.activity.MyPropertyActivity" ></activity>
         <activity android:name="com.gb.cwsm.engineer.activity.EditTimeActivity" ></activity>
         <activity android:name="com.gb.cwsm.engineer.activity.ConplaintActivity" ></activity>
+         <activity android:name="com.gb.cwsm.engineer.activity.order.OrderProgressActivity" ></activity>
         
         
         <!-- 个推SDK配置开始 -->

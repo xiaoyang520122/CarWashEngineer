@@ -35,6 +35,7 @@
     <color name="hui_main">#ff7e7d83</color>
     <color name="yellow_main">#ffff8400</color>
     <color name="hui_line">#ffd7d7d7</color>
+    <color name="hui_main2">#ff939292</color>
     <color name="result_view">#b0000000</color>
     <color name="viewfinder_mask">#60000000</color>
     <color name="possible_result_points">#c0ffff00</color> 

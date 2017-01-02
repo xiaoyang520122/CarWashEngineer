@@ -30,5 +30,12 @@
 	<string name="demo_date">2016-12-01 星期一</string>
 	<string name="complatid_title">投诉记录</string>
 	<string name="complatid_title2">扣款记录</string>
+	<string name="vip_type">会员类型：%s</string>
+	<string name="user_info">用户信息</string>
+	<string name="order_info">订单信息</string>
+	<string name="order_state">订单状态</string>
+	<string name="look_road">查 看 导 航 路 线</string>
+	<string name="start_serve">开始服务</string>
+	<string name="serve_type2">服务类型 | </string>
 
 </resources>

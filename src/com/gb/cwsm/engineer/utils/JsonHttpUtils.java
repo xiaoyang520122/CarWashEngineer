@@ -158,8 +158,7 @@ public class JsonHttpUtils {
 		for (NameValuePair nv:params) {
 			str+=nv.getName()+"="+nv.getValue()+":";
 		}
-		Log.i("LONGING", str);
-		
+		Log.i("JsonHttpUtils", typecode+"请求参数为："+str);
 		
 		try {
 			Log.i("requst_code", "开始请求！");
@@ -216,6 +215,7 @@ public class JsonHttpUtils {
 			httpPost.abort();
 			httpClient.getConnectionManager().shutdown();
 		}
+		Log.i("JsonHttpUtils", typecode+"请求相应数据为："+result);
 		if (!TextUtils.isEmpty(result)) { 
 			NameValuePair valuePair=new BasicNameValuePair(typecode+"", result);
 			EventBus.getDefault().post(valuePair);

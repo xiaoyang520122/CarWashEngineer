@@ -282,7 +282,9 @@ public class LogingActivity extends BaseActivity implements OnClickListener {
 		new AlertDialog.Builder(this).setTitle("提示！").setMessage(getString(R.string.no_register_msg)).setPositiveButton("马上注册", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {
-				LogingActivity.this.startActivity(new Intent(LogingActivity.this, RegisterActivity.class));
+				Intent intent=new Intent(LogingActivity.this, RegisterActivity.class);
+				intent.putExtra("phonenumber", phoneNumber);
+				LogingActivity.this.startActivity(intent);
 				finish();
 			}
 		}).setNegativeButton("重输", null).create().show();

@@ -51,6 +51,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 	private String phoneNumber;
 	private LoadingDialog loadDlog;
 	private Dialog dialog;
+	public static SharedPreferences sp;
 	
 	@Override
 	protected void onCreate(Bundle paramBundle) {
@@ -59,6 +60,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 		setContentView(R.layout.register_activity);
 		ActivityManagerUtil.getInstance().addToList(this);
 		EventBus.getDefault().register(this);
+		sp = getSharedPreferences("register_info", Context.MODE_PRIVATE);
 		initview();
 	}
 	
@@ -72,6 +74,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 	private void initview() {
 		submitbt=(Button) findViewById(R.id.register_submit);
 		phoneedit=(EditText) findViewById(R.id.register_phone);
+		phoneedit.setText(getIntent().getStringExtra("phonenumber"));
 		codeedit=(EditText) findViewById(R.id.register_code);
 		usernameedit=(EditText) findViewById(R.id.register_username);
 		emailedit=(EditText) findViewById(R.id.register_email);
@@ -176,7 +179,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 			break;
 			
 		case JsonHttpUtils.REGISTER_BY_DX:
-			Log.i("LONGING", "短信登陆=="+value.getValue());
+			Log.i("LONGING", "短信注册=="+value.getValue());
 			isRegistersuccess(value.getValue());
 			break;
 			
@@ -213,7 +216,6 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 //	}
 
 	private void isRegistersuccess(String jsonvalue) {
-		Log.i("LONGING", "短信登陆验证返回数据="+jsonvalue);
 //		loadDlog.dismiss();
 		try {
 			JSONObject jo1 = new JSONObject(jsonvalue);

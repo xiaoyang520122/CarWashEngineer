@@ -1,22 +1,38 @@
 package com.gb.cwsm.engineer;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
+import android.text.TextUtils;
 
 import com.baidu.mapapi.SDKInitializer;
 import com.gb.cwsm.engineer.entity.PersistentCookieStore;
+import com.gb.cwsm.engineer.entity.URLs;
+import com.gb.cwsm.engineer.entity.User;
+import com.gb.cwsm.engineer.utils.JsonHttpUtils;
+import com.gb.cwsm.engineer.utils.Md5Util;
 
 public class AppApplication extends Application {
 	
 	public static boolean MARKER_TYPE=true;
-	
+	private List<NameValuePair> NVparames;
 	 private static final String TAG = "GetuiSdkDemo";
 	 private static DemoHandler handler;
 
@@ -24,6 +40,7 @@ public class AppApplication extends Application {
 	public boolean m_bKeyRight = true;
 //	public static List<Product> PRODUCTLIST;
 	public static String  CID="";
+	public static User USER;
 	public static SharedPreferences sp;
 
 
@@ -32,9 +49,13 @@ public class AppApplication extends Application {
 		// TODO Auto-generated method stub
 		super.onCreate();
 		mInstance = this;
+		sp = getSharedPreferences("carwashsuperman", Context.MODE_PRIVATE);
 		SDKInitializer.initialize(this);
-		setMarkerType();
 		getCID();
+		Loginguser();
+		EventBus.getDefault().register(this);
+		setMarkerType();
+		
 	}
 
 	private void getCID() {
@@ -56,7 +77,6 @@ public class AppApplication extends Application {
 	}
 
 	private void setMarkerType(){
-		 sp = getSharedPreferences("register_info", Context.MODE_PRIVATE);
 		boolean type = sp.getBoolean("markertype", true);
 			MARKER_TYPE=type;
 	}
@@ -101,4 +121,68 @@ public class AppApplication extends Application {
 	            }
 	        }
 	    }
+	 private void Loginguser() {
+			String mobile=sp.getString("phonenumber", "");
+			if (TextUtils.isEmpty(mobile)) {
+				return;
+			}
+			NVparames = new ArrayList<NameValuePair>(2);
+			NVparames.add(new BasicNameValuePair("username", mobile));
+			NVparames.add(new BasicNameValuePair("enPassword", Md5Util.MD5("123456")));
+			NVparames.add(new BasicNameValuePair("cid",AppApplication.CID));
+			new Thread() {
+				@Override
+				public void run() {
+					super.run();
+					JsonHttpUtils.doPost(URLs.LOGING_BY_PASS, NVparames, 555, mInstance);
+				}
+			}.start();
+		}
+		
+		@Subscribe(threadMode=ThreadMode.MAIN)
+		public void eventloging(NameValuePair value){
+			int code = Integer.valueOf(value.getName());
+			switch (code) {
+			case 555:
+				islogingsuccess(value.getValue());
+				break;
+
+			default:
+				break;
+			}
+		}
+
+		private void islogingsuccess(String jsonstr) {
+			try {
+				JSONObject jo1=new JSONObject(jsonstr);
+				JSONObject jo2=jo1.getJSONObject("message");
+				JSONObject jo3=jo1.getJSONObject("data");
+				if (jo2.getString("type").equals("success")) {
+					getusermsg(jo3);
+				}
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+
+		@SuppressLint("SimpleDateFormat")
+		public static  void getusermsg(JSONObject jo3) {
+			USER=new User();
+			SimpleDateFormat fmt=new SimpleDateFormat("yyyyƒÍMM‘¬dd»’");
+			try {
+				long mi=Long.valueOf(jo3.getString("birth"));
+				String birthstr=fmt.format(new Date(mi));
+				USER.setId(jo3.getString("id"));
+				USER.setBirth(birthstr);
+				USER.setEmail(jo3.getString("email"));
+				USER.setGender(jo3.getString("gender"));
+				USER.setMobile(jo3.getString("mobile"));
+				USER.setName(jo3.getString("name"));
+				JSONObject jo4=jo3.getJSONObject("memberRank");
+				USER.setVip(jo4.getString("name"));
+//				USER.setAreaId(jo3.getString("id"));
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
 }

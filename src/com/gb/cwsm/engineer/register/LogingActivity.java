@@ -155,7 +155,7 @@ public class LogingActivity extends BaseActivity implements OnClickListener {
 			@Override
 			public void run() {
 				super.run();
-				JsonHttpUtils.doPost(URLs.POST_DX_LOGING, params, JsonHttpUtils.LOGING_BY_DX, LogingActivity.this);
+				JsonHttpUtils.doPost(URLs.POST_DX_LOGING, params, JsonHttpUtils.LOGING_BY_DX);
 			}
 		}.start();
 	}
@@ -178,7 +178,7 @@ public class LogingActivity extends BaseActivity implements OnClickListener {
 				params = new ArrayList<NameValuePair>(1);
 				params.add(new BasicNameValuePair("mobile", phoneNumber));
 				params.add(new BasicNameValuePair("operatorType", "engineer"));
-				JsonHttpUtils.doPost(URLs.GET_CHECK_MOBILE, params, JsonHttpUtils.GET_CHECK_MOBILE, LogingActivity.this);
+				JsonHttpUtils.doPost(URLs.GET_CHECK_MOBILE, params, JsonHttpUtils.GET_CHECK_MOBILE);
 			}
 		}.start();
 
@@ -299,7 +299,7 @@ public class LogingActivity extends BaseActivity implements OnClickListener {
 				params = new ArrayList<NameValuePair>(2);
 				params.add(new BasicNameValuePair("mobile", phoneNumber));
 				params.add(new BasicNameValuePair("type", "memberLogin"));
-				JsonHttpUtils.doPost(URLs.GET_DXYZ_CODE, params, JsonHttpUtils.GET_DXYZ_CODE, LogingActivity.this);
+				JsonHttpUtils.doPost(URLs.GET_DXYZ_CODE, params, JsonHttpUtils.GET_DXYZ_CODE);
 			}
 		}.start();
 	}

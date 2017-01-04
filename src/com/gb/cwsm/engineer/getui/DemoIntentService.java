@@ -1,10 +1,18 @@
 package com.gb.cwsm.engineer.getui;
 
+import org.apache.http.message.BasicNameValuePair;
+import org.greenrobot.eventbus.EventBus;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Context;
+import android.content.Intent;
 import android.os.Message;
 import android.util.Log;
 
 import com.gb.cwsm.engineer.AppApplication;
+import com.gb.cwsm.engineer.service.Music;
+import com.gb.cwsm.engineer.utils.JsonHttpUtils;
 import com.igexin.sdk.GTIntentService;
 import com.igexin.sdk.PushManager;
 import com.igexin.sdk.message.GTCmdMessage;
@@ -19,7 +27,6 @@ import com.igexin.sdk.message.GTTransmitMessage;
  */
 public class DemoIntentService extends GTIntentService {
 	
-
 	/**
      * 为了观察透传数据变化.
      */
@@ -52,8 +59,11 @@ public class DemoIntentService extends GTIntentService {
         if (payload == null) {
             Log.e(TAG, "receiver payload = null");
         } else {
+        	startService(new Intent(getApplicationContext(), Music.class));
             String data = new String(payload);
+            sendevent(data);
             Log.d(TAG, "receiver payload = " + data);
+            
 
             // 测试消息为了观察数据变化
             if (data.equals("收到一条透传测试消息")) {
@@ -66,8 +76,30 @@ public class DemoIntentService extends GTIntentService {
         Log.d(TAG, "----------------------------------------------------------------------------------------------");
     }
     
-    @Override
+    private void sendevent(String data) {
+		try {
+			JSONObject jo=new JSONObject(data);
+			int code=Integer.valueOf(jo.getString("title"));
+			switch (code) {
+			case JsonHttpUtils.NEW_ORDER_PAYLOAD:
+				postevent(code,jo.optString("content"));
+				break;
+
+			default:
+				break;
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void postevent(int code,String data) {
+		EventBus.getDefault().post(new BasicNameValuePair(code+"", data));
+	}
+
+	@Override
     public void onReceiveClientId(Context context, String clientid) {
+		EventBus.getDefault().register(this);
     	Log.e(TAG, "onReceiveClientId -> " + "clientid = " + clientid);
         sendMessage(clientid, 1);
     }
@@ -88,4 +120,5 @@ public class DemoIntentService extends GTIntentService {
         msg.obj = data;
         AppApplication.sendMessage(msg);
     }
+    
 }

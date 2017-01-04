@@ -57,7 +57,7 @@ public class BaseActivity extends FragmentActivity {
 	private ActionBar actionBar;
 	private View mActionBarView;
 	private TextView tvL, tvTitle, tvR;
-	private ImageView logo, more;
+	private ImageView  more;
 
 	static {
 		heightPixel = 0;
@@ -119,7 +119,7 @@ public class BaseActivity extends FragmentActivity {
 		tvL = (TextView) mActionBarView.findViewById(R.id.action_left_tv);
 		tvTitle = (TextView) mActionBarView.findViewById(R.id.action_title_tv);
 		tvR = (TextView) mActionBarView.findViewById(R.id.action_right_tv);
-		logo = (ImageView) findViewById(R.id.center_logo_img);
+//		logo = (ImageView) findViewById(R.id.center_logo_img);
 		more = (ImageView) findViewById(R.id.more_img);
 	}
 
@@ -133,7 +133,7 @@ public class BaseActivity extends FragmentActivity {
 
 		if (!titleName.equals("") && titleName != null) {
 			tvTitle.setText(titleName);
-			logo.setVisibility(View.GONE);
+//			logo.setVisibility(View.GONE);
 		}
 
 		if (!titleRight.equals("") && titleRight != null) {
@@ -172,7 +172,7 @@ public class BaseActivity extends FragmentActivity {
 	 * 显示中间logo图标
 	 */
 	public void SetLogo() {
-		logo.setVisibility(View.VISIBLE);
+//		logo.setVisibility(View.VISIBLE);
 		tvTitle.setVisibility(View.GONE);
 	}
 

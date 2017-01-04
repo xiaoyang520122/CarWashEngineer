@@ -134,7 +134,7 @@ public class AppApplication extends Application {
 				@Override
 				public void run() {
 					super.run();
-					JsonHttpUtils.doPost(URLs.LOGING_BY_PASS, NVparames, 555, mInstance);
+					JsonHttpUtils.doPost(URLs.LOGING_BY_PASS, NVparames, 555);
 				}
 			}.start();
 		}
@@ -170,10 +170,12 @@ public class AppApplication extends Application {
 			USER=new User();
 			SimpleDateFormat fmt=new SimpleDateFormat("yyyyƒÍMM‘¬dd»’");
 			try {
-				long mi=Long.valueOf(jo3.getString("birth"));
-				String birthstr=fmt.format(new Date(mi));
+				try {
+					long mi=Long.valueOf(jo3.getString("birth"));
+					String birthstr=fmt.format(new Date(mi));
+					USER.setBirth(birthstr);
+				} catch (NumberFormatException e) { e.printStackTrace(); }
 				USER.setId(jo3.getString("id"));
-				USER.setBirth(birthstr);
 				USER.setEmail(jo3.getString("email"));
 				USER.setGender(jo3.getString("gender"));
 				USER.setMobile(jo3.getString("mobile"));

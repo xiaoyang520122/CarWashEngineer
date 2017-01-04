@@ -16,11 +16,12 @@
         android:paddingTop="10dp" >
 
         <TextView
+            android:id="@+id/neworitem_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:drawableRight="@drawable/yuyue_hui32"
-            android:text="新的订单：2016-08-29  16：24"
+            android:text="新的订单：%s"
             android:textColor="@color/hui_main"
             android:textSize="16sp" />
 
@@ -41,10 +42,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="@string/serve_type2"
+                android:text="@string/order_sn"
                 android:textColor="@color/yellow_main"
                 android:textSize="14sp" />
             <TextView
+            android:id="@+id/neworitem_sn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
@@ -66,6 +68,7 @@
                 android:textColor="@color/yellow_main"
                 android:textSize="14sp" />
             <TextView
+            android:id="@+id/neworitem_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"

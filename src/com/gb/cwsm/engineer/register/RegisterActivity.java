@@ -135,7 +135,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 			@Override
 			public void run() {
 				super.run();
-				JsonHttpUtils.doPost(URLs.POST_DX_REGISTER, params, JsonHttpUtils.REGISTER_BY_DX, RegisterActivity.this);
+				JsonHttpUtils.doPost(URLs.POST_DX_REGISTER, params, JsonHttpUtils.REGISTER_BY_DX);
 			}
 		}.start();
 	}
@@ -158,7 +158,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 				params = new ArrayList<NameValuePair>(2);
 				params.add(new BasicNameValuePair("mobile", phoneNumber));
 				params.add(new BasicNameValuePair("operatorType", "engineer"));
-				JsonHttpUtils.doPost(URLs.GET_CHECK_MOBILE, params, JsonHttpUtils.R_GET_CHECK_MOBILE, RegisterActivity.this);
+				JsonHttpUtils.doPost(URLs.GET_CHECK_MOBILE, params, JsonHttpUtils.R_GET_CHECK_MOBILE);
 			}
 		}.start();
 
@@ -348,7 +348,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 				params = new ArrayList<NameValuePair>(2);
 				params.add(new BasicNameValuePair("mobile", phoneNumber));
 				params.add(new BasicNameValuePair("type", "memberRegister"));
-				JsonHttpUtils.doPost(URLs.GET_DXYZ_CODE, params, JsonHttpUtils.GET_DXYZ_CODE, RegisterActivity.this);
+				JsonHttpUtils.doPost(URLs.GET_DXYZ_CODE, params, JsonHttpUtils.GET_DXYZ_CODE);
 			}
 		}.start();
 	}

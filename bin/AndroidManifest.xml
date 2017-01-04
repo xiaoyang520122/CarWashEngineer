@@ -111,6 +111,7 @@
           <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
       </intent-filter>
 </receiver>
+<service android:enabled="true" android:name="com.gb.cwsm.engineer.service.Music" /> 
 <provider
       android:name="com.igexin.download.DownloadProvider"
       android:authorities="downloads.com.gb.cwsm.engineer"

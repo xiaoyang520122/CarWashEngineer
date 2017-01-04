@@ -26,7 +26,8 @@ public class URLs implements Serializable {
 	public final static String POST_DX_REGISTER = HOST + "/register/submit_mobile.jhtml";
 	/**用户信息修改**/
 	public final static String MODIFY_USER_MSG = HOST + "/member/profile/update.jhtml";
-	
+	/**订单信息查询**/
+	public final static String REQUEST_ORDER_INFO = HOST + "/member/order/view.jhtml";
 	
 	
 	/**http://202.170.139.223:8044/wap/engineer/get_engineers.jhtml?latitude=22.557473&longitude=114.019824&radius=3

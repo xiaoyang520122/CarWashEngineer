@@ -54,6 +54,10 @@ public class JsonHttpUtils {
 	public final static int MODIFY_USER_MSG = 1007;
 	/**注册验证手机号*/
 	public final static int R_GET_CHECK_MOBILE = 1008;
+	/**新订单透传信息*/
+	public final static int NEW_ORDER_PAYLOAD=1009;
+	/**订单信息查询*/
+	public final static int REQUEST_ORDER_INFO=1010;
 	
 	
 	
@@ -63,7 +67,7 @@ public class JsonHttpUtils {
 	 * @return
 	 */
 	@SuppressLint("NewApi")
-	public static String getHtmlString(String minterface, List<String> parametes, int typecode, Context context) {
+	public static String getHtmlString(String minterface, List<String> parametes, int typecode) {
 		String result = "";
 		BufferedReader in = null;
 		String path = minterface;
@@ -147,7 +151,7 @@ public class JsonHttpUtils {
 
 
 	@SuppressLint("NewApi")
-	public static void doPost(String minterface, List<NameValuePair> params, int typecode, Context context) {
+	public static void doPost(String minterface, List<NameValuePair> params, int typecode) {
 		// HttpClientTool.network();
 		String result = null;
 		HttpPost httpPost = new HttpPost(minterface);
